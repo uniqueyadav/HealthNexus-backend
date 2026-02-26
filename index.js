@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use(
     cors({
-        origin: CLIENT_URL || "*",
+        origin: "https://healthnexusomega.vercel.app",
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
     })
