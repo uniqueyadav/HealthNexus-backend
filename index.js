@@ -19,9 +19,31 @@ const CLIENT_URL = process.env.CLIENT_URL;
 app.use(express.json());
 
 
+// app.use(
+//     cors({
+//         origin: "https://healthnexusomega.vercel.app",
+//         methods: ["GET", "POST", "PUT", "DELETE"],
+//         credentials: true,
+//     })
+// );
+// Dono origins ko allow karne ke liye array banaiye
+const allowedOrigins = [
+    "https://healthnexusomega.vercel.app", // Aapka Live Vercel Link
+    "http://localhost:5173" // Aapka Local Vite/React Link
+];
+
 app.use(
     cors({
-        origin: "https://healthnexusomega.vercel.app",
+        origin: function(origin, callback) {
+            // allows requests with no origin (like mobile apps or curl)
+            if (!origin) return callback(null, true);
+
+            if (allowedOrigins.indexOf(origin) !== -1) {
+                callback(null, true);
+            } else {
+                callback(new Error("CORS policy block: This origin is not allowed"));
+            }
+        },
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true,
     })
