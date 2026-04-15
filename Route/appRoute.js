@@ -64,6 +64,18 @@ appRoute.get('/:id', async(req, res) => {
         res.json("error", error)
     }
 });
+appRoute.get('/doctor/:did', async(req, res) => {
+    try {
+        // did (Doctor ID) ke basis par saare appointments find karo
+        const appointments = await AppointmentModel.find({ did: req.params.did })
+            .populate('pid', 'name') // Patient ka naam nikalne ke liye populate
+            .sort({ date: 1 }); // Date wise sort
+
+        res.json({ msg: "Success", value: appointments });
+    } catch (err) {
+        res.status(500).json({ msg: "Error fetching appointments" });
+    }
+});
 
 
 module.exports = appRoute;

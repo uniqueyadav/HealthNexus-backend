@@ -10,8 +10,7 @@ const regSchema = mongoose.Schema({
 
     },
     altnumber: {
-        type: String,
-        required: true,
+        type: String
 
     },
     email: {
@@ -32,8 +31,7 @@ const regSchema = mongoose.Schema({
         required: true
     },
     blood: {
-        type: String,
-        required: true
+        type: String
     },
     address: {
         type: String,

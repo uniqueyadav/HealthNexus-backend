@@ -38,6 +38,31 @@ const doctorSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    department: {
+        type: String,
+        required: true
+    },
+    working_days: {
+        type: String,
+        required: true
+    },
+    shift: {
+        type: String,
+        required: true
+    },
+    fee: {
+        type: String
+    },
+    room: {
+        type: String,
+        required: true
+    },
+    additional_info: {
+        type: String
+    },
+    working_experience: {
+        type: String
+    },
     status: {
         type: String,
         default: "u"
